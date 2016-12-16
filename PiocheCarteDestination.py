@@ -1,0 +1,2 @@
+class PiocheCarteDestination:
+    pass

@@ -1,0 +1,2 @@
+class PlateauDeJeu:
+    pass

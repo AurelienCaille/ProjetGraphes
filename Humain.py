@@ -1,0 +1,2 @@
+class Humain:
+    pass
