@@ -1,2 +1,3 @@
-class Ordinateur:
+from Joueur import Joueur
+class Ordinateur(Joueur):
     pass
