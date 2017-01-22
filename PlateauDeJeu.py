@@ -3,7 +3,7 @@ from PiocheCarteDestination import PiocheCarteDestination
 from PiocheCartesWagon import PiocheCartesWagon
 from Joueur import Joueur
 
-class PlateauDeJeu:
+class PlateauDeJeu(object):
     """ Classe representant le plateau du jeu des aventuriers du rail """
     def __init__(self, joueur1, joueur2):
         """
@@ -13,10 +13,9 @@ class PlateauDeJeu:
         :self.pioche_carte_wagon: init la pile de carte wagon a piocher
         :self.pioche_carte_destination: init la pile de carte destination
         :self.joueur1: j1 passer en argument passe en attribut du plateau
-        :self.joueur2: pareil que pour j1 
-                                 
+        :self.joueur2: pareil que pour j1
         """
-        self.graphe = Graphe()
+        self.graphe = Graph()
         self.cartes_wagon_visibles = []
         self.pioche_carte_wagon = PiocheCartesWagon()
         self.pioche_carte_destination = PiocheCarteDestination()
@@ -32,5 +31,3 @@ class PlateauDeJeu:
     def jouer(self):
 
         self.joueur1.jouer()
-
-        
