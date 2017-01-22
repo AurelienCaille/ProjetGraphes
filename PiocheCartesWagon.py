@@ -21,7 +21,7 @@ class PiocheCartesWagon:
         random.shuffle(self.pioche)
 
 
-    def piocher(self, nombreCarte = 1):
+    def piocher(self):
         """
         supprime et retourne un element de la pile de cartes wagons
         """
