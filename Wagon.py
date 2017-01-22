@@ -10,4 +10,4 @@ class Wagon:
         """
         renvoie letat de la couleur du wagon
         """
-        return "Wagon: " + couleur
+        return "Wagon: " + self.couleur
