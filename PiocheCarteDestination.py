@@ -1,9 +1,9 @@
 import random
-class PiocheCarteDestination:
+class PiocheCarteDestination(object):
     """ Classe representant une piochde de carte destination"""
     def __init__(self):
         """
-        :attribut self.pioche: init la pile de carte destination vide 
+        :attribut self.pioche: init la pile de carte destination vide
         """
 
         self.pioche = []
