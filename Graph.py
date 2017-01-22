@@ -35,8 +35,27 @@ class Graph(object):
         else:
             raise NameError('Nodes dosnt exist in this current graph')
 
+    def dijkstra(self, departure):
+        """
+        """
+        colors_nodes = {}
+        distance = {}
+
+        for node in self.nodes:
+            colors_nodes[node] = "white"
+
+        distance[departure] = 0
+
+        for child in self.adjacency_list[departure]:
+            distance = [item[3] for item in self.edges if item[0] == departure and item[1] == child][0]
+            distance[child] = distance.get(child, []).append((departure, distance))
+
+        colors_nodes[departure] = "black"
+        
+
     def composantes_connexes(self, departure):
         """
+        (graphe non oriente uniquement)
         Retourne une liste de liste de sommets apparatenant aux memes composantes connexes
         """
         parents = {}
@@ -142,7 +161,7 @@ class Graph(object):
 
         return parents
 
- 
+
     def is_bipartite(self):
         """
         Make a journey from the "departure" in the graph
