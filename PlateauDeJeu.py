@@ -14,7 +14,9 @@ class PlateauDeJeu(object):
         :self.joueur1: j1 passer en argument passe en attribut du plateau
         :self.joueur2: pareil que pour j1
         """
-        self.graphe = Graph()
+        self.map = Graph() #Code stephanie
+        self.construction = Graph()
+        self.construction.nodes = self.map.nodes
         self.cartes_wagon_visibles = []
         self.pioche_carte_wagon = PiocheCartesWagon()
         self.pioche_carte_destination = PiocheCarteDestination()
