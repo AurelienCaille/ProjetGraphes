@@ -4,12 +4,12 @@ class Joueur(object):
     def __init__(self):
         """
         :self.adversaire: init le joueur adverse de Joueur
-        :self.score: represente le score du Joueur, commance à 1
-        :self.cartes_wagons: init la liste vide de cartes wagon du joueur 
+        :self.score: represente le score du Joueur, commance a 1
+        :self.cartes_wagons: init la liste vide de cartes wagon du joueur
         :self.cartes_destinations: init la lst vide de carte destination
         :self.reserve_wagon: init le stock de wagon de couleur du joueur
         :self.plateau_de_jeu: init a None le plateau de jeu associe au joueur
-        self.plateau_de_jeu sera defini par l objet de classe plateau_de_jeu 
+        self.plateau_de_jeu sera defini par l objet de classe plateau_de_jeu
         """
 
         self.adversaire = None
