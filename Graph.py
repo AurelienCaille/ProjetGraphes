@@ -35,6 +35,62 @@ class Graph(object):
         else:
             raise NameError('Nodes dosnt exist in this current graph')
 
+    def composantes_connexes(self, departure):
+        """
+        Retourne une liste de liste de sommets apparatenant aux memes composantes connexes
+        """
+        parents = {}
+        colors = {}
+        fifo = []
+        composantes = []
+        indice_composante = 0
+
+        fifo.append(departure)
+        composantes.append([departure])
+        parents[departure] = None
+
+        for node in self.nodes:
+            colors[node] = "white"
+
+        while len(fifo) != False:
+            actual = fifo[0]
+
+            new_child = 0
+
+
+            #Child courses: Add new node in the fifo list
+            for child in self.adjacency_list[actual]:
+                if colors[child] == "white":
+
+                    fifo.append(child)
+                    colors[child] == "grey"
+                    parents[child] = parents.get(child, actual)
+
+                    #ajout de l'enfant dans la composantes
+                    if child not in composantes[indice_composante]:
+                        composantes[indice_composante].append(child)
+                    new_child += 1
+
+            colors[actual] = "black"
+            fifo.pop(0)
+
+
+            #Check if fifo list empty but still rest node to search
+
+            if ((len(fifo) == False) and \
+                (not all(color == "black" for color in colors.values()))):
+
+                for node in sorted(self.nodes):
+                    if colors[node] == "white":
+                        fifo.append(node)
+                        parents[node] = None
+                        indice_composante += 1
+                        composantes.append([fifo[0]])
+                        break
+
+
+        return composantes
+
 
     def breadth_first_search(self, departure):
         """
