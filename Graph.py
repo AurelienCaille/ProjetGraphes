@@ -142,57 +142,7 @@ class Graph(object):
 
         return parents
 
-    def depth_first_search(self, departure):
-        """
-        Make a journey from the "departure" in the graph
-        use depth method
-        return a parent tree (dictonary)
-        """
-
-        parents = {}
-        colors = {}
-        lifo = []
-
-        lifo.append(departure)
-        parents[departure] = None
-
-        for node in self.nodes:
-            colors[node] = "white"
-
-        while len(lifo) != False:
-            actual = lifo[-1]
-
-            new_child = 0
-
-            #Add new node in the lifo list
-            for child in self.adjacency_list[actual]:
-                if colors[child] == "white":
-
-                    lifo.append(child)
-                    colors[child] == "grey"
-                    parents[child] = parents.get(child, actual)
-
-                    new_child += 1
-
-            colors[actual] = "black"
-            lifo.remove(actual)
-
-
-            #Check if lifo list empty but still rest node to search
-
-            if ((len(lifo) == False) and \
-                (not all(color == "black" for color in colors.values()))):
-
-                for node in sorted(self.nodes):
-                    if colors[node] == "white":
-                        lifo.append(node)
-                        parents[node] = None
-                        break
-
-
-        return parents
-
-
+ 
     def is_bipartite(self):
         """
         Make a journey from the "departure" in the graph
