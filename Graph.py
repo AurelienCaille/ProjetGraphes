@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-class Graph:
+class Graph(object):
     """
     Class representing a graph
     """
@@ -51,16 +51,14 @@ class Graph:
         parents[departure] = None
 
         for node in self.nodes:
-            
             colors[node] = "white"
 
         while len(fifo) != False:
-            
             actual = fifo[0]
 
             new_child = 0
 
-            #Child courses: Add new node in the fifo list 
+            #Child courses: Add new node in the fifo list
             for child in self.adjacency_list[actual]:
                 if colors[child] == "white":
 
@@ -103,16 +101,14 @@ class Graph:
         parents[departure] = None
 
         for node in self.nodes:
-            
             colors[node] = "white"
 
         while len(lifo) != False:
-            
             actual = lifo[-1]
 
             new_child = 0
 
-            #Add new node in the lifo list 
+            #Add new node in the lifo list
             for child in self.adjacency_list[actual]:
                 if colors[child] == "white":
 
@@ -157,20 +153,19 @@ class Graph:
             for node in to_nodes:
                 adjacency_list_non_oriented[node].append(from_node)
 
-            
-            
+
 
         departure = sorted(self.nodes)[0]
 
         fifo.append(departure)
-        
+
 
         for node in self.nodes:
-            
+
             partite[node] = 0
 
         while len(fifo) != False:
-            
+
             actual = fifo[0]
 
             if partite[actual] == 0:

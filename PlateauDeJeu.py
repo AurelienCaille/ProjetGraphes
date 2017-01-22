@@ -1,7 +1,6 @@
 from Graph import Graph
 from PiocheCarteDestination import PiocheCarteDestination
 from PiocheCartesWagon import PiocheCartesWagon
-from Joueur import Joueur
 
 class PlateauDeJeu(object):
     """ Classe representant le plateau du jeu des aventuriers du rail """
@@ -29,5 +28,6 @@ class PlateauDeJeu(object):
         self.joueur2.adversaire = joueur1
 
     def jouer(self):
+        """ Lance la partie de jeu """
 
         self.joueur1.jouer()
