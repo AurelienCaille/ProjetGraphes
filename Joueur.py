@@ -45,7 +45,7 @@ class Joueur(object):
         """ Methode abstraire permettant le choix d'une carte destination """
         pass
 
-    def construire_route(self, depart, arrive):
+    def construire_route(self, depart, arrive, nombre_locomotive):
         """
         Construit une route entre deux stations selon les regles du jeu CF: ManuelDuJoueur
         Retourne True si la route est construite, False si elle n'a pas pu etre construite
