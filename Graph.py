@@ -37,6 +37,7 @@ class Graph(object):
 
     def dijkstra(self, departure):
         """
+        Parcours le graphe et donne le chemin le plus court pour chaque autre sommet
         """
         colors_nodes = {}
         distance = {}
@@ -51,7 +52,7 @@ class Graph(object):
             distance[child] = distance.get(child, []).append((departure, distance))
 
         colors_nodes[departure] = "black"
-        
+
 
     def composantes_connexes(self, departure):
         """
