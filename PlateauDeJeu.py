@@ -32,4 +32,14 @@ class PlateauDeJeu(object):
     def jouer(self):
         """ Lance la partie de jeu """
 
+        #Les joueurs piochent 4 cartes wagons et 3 cartes destinations
+        for dummy_i in range(4):
+            self.joueur1.cartes_wagons.append(self.pioche_carte_wagon.piocher())
+            self.joueur2.cartes_wagons.append(self.pioche_carte_wagon.piocher())
+
+        for dummy_i in range(3):
+            self.joueur1.cartes_destinations.append(self.pioche_carte_destination.piocher())
+            self.joueur2.cartes_destinations.append(self.pioche_carte_destination.piocher())
+
+        #On lance le tour du premier joueur
         self.joueur1.jouer()
