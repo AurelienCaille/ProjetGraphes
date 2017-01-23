@@ -28,9 +28,9 @@ class PiocheCarteDestination(object):
 
 if __name__ == '__main__':
 
-    piocheCarte = PiocheCarteDestination()
-    piocheCarte.pioche = [1,2,3]
-    piocheCarte.melanger()
-    print(piocheCarte)
-    print(piocheCarte.piocher())
-    print(piocheCarte)
+    pioche_carte = PiocheCarteDestination()
+    pioche_carte.pioche = [1, 2, 3]
+    pioche_carte.melanger()
+    print(pioche_carte)
+    print(pioche_carte.piocher())
+    print(pioche_carte)
