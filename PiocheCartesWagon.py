@@ -17,7 +17,7 @@ class PiocheCartesWagon:
         """
         self.pioche += self.defausse
         self.defausse = []
-        
+
         random.shuffle(self.pioche)
 
 

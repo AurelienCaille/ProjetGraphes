@@ -1,7 +1,9 @@
 
+from __future__ import print_function #retirer message d'avertissement pylint
+from Wagon import Wagon
 class Joueur(object):
     """Classe abstraite representant un joueur"""
-    def __init__(self):
+    def __init__(self, couleur):
         """
         :self.adversaire: init le joueur adverse de Joueur
         :self.score: represente le score du Joueur, commance a 1
@@ -10,6 +12,7 @@ class Joueur(object):
         :self.reserve_wagon: init le stock de wagon de couleur du joueur
         :self.plateau_de_jeu: init a None le plateau de jeu associe au joueur
         self.plateau_de_jeu sera defini par l objet de classe plateau_de_jeu
+        :self.couleur: represente la couleur du Joueur
         """
 
         self.adversaire = None
@@ -18,6 +21,7 @@ class Joueur(object):
         self.cartes_destinations = []
         self.reserve_wagon = 45
         self.plateau_de_jeu = None
+        self.couleur = couleur
 
 
     def calculer_score_finale(self):
@@ -45,17 +49,59 @@ class Joueur(object):
         """ Methode abstraire permettant le choix d'une carte destination """
         pass
 
-    def construire_route(self, depart, arrive, nombre_locomotive):
+    def construire_route(self, depart, arrive, nombre_locomotive, couleur_desiree):
         """
         Construit une route entre deux stations selon les regles du jeu CF: ManuelDuJoueur
         Retourne True si la route est construite, False si elle n'a pas pu etre construite
         """
 
+        longueur_route = None
+        couleur_route = None
+
         #On verifie que la route existe
         if not depart in self.plateau_de_jeu.graphe.adjacency_list or not\
             arrive in self.plateau_de_jeu.graphe.adjacency_list[depart]:
 
+            print("La route n'existe pas!!!")
+            return False
+
+        #On recupere alors la longueur et couleur de la route
+        for edge in self.plateau_de_jeu.map.edges:
+            if edge[0] == depart and edge[1] == arrive:
+                pass
+
+        if couleur_route != "Gris" and couleur_route != couleur_desiree:
+            print("La couleur de la route et la couleur desiree ne sont pas les memes !!!")
+            return False
+
+        #On verifie que l'on a assez de wagon
+        if self.reserve_wagon < longueur_route:
+            print("Le joueur n'a plus assez de wagon")
             return False
 
         #On verifie que l'on a bien toutes les cartes
+        if not len([carte_wagon \
+        for carte_wagon in self.cartes_wagons \
+        if carte_wagon.couleur == "Multicolore"]) >= nombre_locomotive:
 
+            print("Le joueur n'a pas le nombre de locomotive demandee!!!")
+            return False
+
+        if not len([carte_wagon \
+        for carte_wagon in self.cartes_wagons \
+        if carte_wagon.couleur == couleur_desiree]) >= longueur_route - nombre_locomotive:
+
+            print("Le joueur n'a pas assez de carte wagon de la bonne couleur")
+            return False
+
+        #On construit la route et retire carte // wagon
+        self.plateau_de_jeu.construction.add_an_edge(depart, arrive, self.couleur)
+
+        self.reserve_wagon -= longueur_route
+
+        for dummy_i in range(longueur_route - nombre_locomotive):
+            self.cartes_wagons.remove(Wagon(couleur_desiree))
+        for dummy_i in range(nombre_locomotive):
+            self.cartes_wagons.remove(Wagon("Multicolore"))
+
+        return True
