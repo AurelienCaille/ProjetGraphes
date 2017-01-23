@@ -16,7 +16,7 @@ class Joueur(object):
         self.score = 0
         self.cartes_wagons = []
         self.cartes_destinations = []
-        self.reserve_wagon = []
+        self.reserve_wagon = 45
         self.plateau_de_jeu = None
 
 
