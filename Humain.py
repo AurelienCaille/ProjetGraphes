@@ -105,3 +105,4 @@ class Humain(Joueur):
             else:
                 print("Le choix n'est pas valide")
 
+        self.adversaire.jouer()
