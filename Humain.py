@@ -19,8 +19,8 @@ class Humain(Joueur):
             \n-Prendre des cartes destination supplementaires(d)")
 
             if choix == "w":  # Selection des deux cartes wagons
-                choix_carte_1 = input("Quel est l'indice de la 1er carte selectionnee?")
-                choix_carte_2 = input("Quel est l'indice de la 2eme carte selectionnee?")
+                choix_carte_1 = input("Quel est l'indice de la 1er carte selectionnee (0-4)?")
+                choix_carte_2 = input("Quel est l'indice de la 2eme carte selectionnee(0-4)?")
 
                 try:
                     choix_carte_1 = int(choix_carte_1)
