@@ -9,6 +9,7 @@ class Graph(object):
         self.nodes = set()
         self.edges = []
         self.adjacency_list = {}
+        self.adjacency_list_valued = {}
 
 
     def add_a_node(self, node_name):
@@ -20,6 +21,7 @@ class Graph(object):
 
         self.nodes.add(node_name)
         self.adjacency_list[node_name] = self.adjacency_list.get(node_name, [])
+        self.adjacency_list_valued[node_name] = self.adjacency_list_valued.get(node_name, [])
 
     def add_an_edge(self, from_node, to_node, value):
         """
@@ -32,6 +34,7 @@ class Graph(object):
         if from_node in self.nodes and to_node in self.nodes:
             self.edges.append((from_node, to_node, value))
             self.adjacency_list[from_node].append(to_node)
+            self.adjacency_list_valued[from_node].append(to_node,value)
         else:
             raise NameError('Nodes dosnt exist in this current graph')
 
@@ -41,17 +44,40 @@ class Graph(object):
         """
         colors_nodes = {}
         distance = {}
+        from_node = {}
 
         for node in self.nodes:
             colors_nodes[node] = "white"
+            distance[node] = float('inf')
 
         distance[departure] = 0
+        colors_nodes[departure] = "grey"
 
-        for child in self.adjacency_list[departure]:
+        while all(colors_nodes != "black"):
+
+            #calcule du node gris le plus proche
+            distance_min = float('inf')
+            for nodes in distance:
+                if distance[nodes] < distance_min and colors_nodes[nodes] == "grey":
+                    actual_node = nodes
+            
+            #etablir les distances le plus courte a partir du node actuel:
+            for voisins, value in self.adjacency_list_valued[actual_node]:
+                if colors_nodes[voisins] == "white":
+                    distance[voisins] = distance[actual_node] + int(value)
+                    from_node[voisins] = actual_node
+                    colors_nodes[voisins] = "grey"
+                elif colors_nodes[voisins] == "grey" :
+                    distance[voisins] = min(distance[voisins], distance[actual_node] + int(value))
+                    from_node[voisins] = actual_node
+            
+            colors_nodes[actual_node] = "black"
+
+        """for child in self.adjacency_list[departure]:
             distance = [item[3] for item in self.edges if item[0] == departure and item[1] == child][0]
             distance[child] = distance.get(child, []).append((departure, distance))
-
-        colors_nodes[departure] = "black"
+            
+        colors_nodes[departure] = "black"""
 
 
     def composantes_connexes(self, departure):
@@ -291,7 +317,6 @@ class Graph(object):
         return strGraph
 
 
-        
         
 
         
