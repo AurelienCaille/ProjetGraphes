@@ -7,6 +7,36 @@ class Humain(Joueur):
     Classe representant un joueur controlle par un Humain
     """
 
+    def prendre_cartes_destinations(self):
+        """
+        Pioche et demande au joueur quelles cartes destinations il souhaite
+        Retourne True s'il a bien pioche et False si l'action ne s'est pas faite
+        """
+        # On pioche les cartes
+        carte_destinations = []
+        carte_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
+        carte_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
+        carte_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
+
+        print("Les cartes destinations sont:")
+        for carte in carte_destinations:
+            print(carte)
+
+        # On fait choisir a l'utilisateur les cartes
+        print("Quelles cartes choisissez vous ? (Minimum 1)")
+        for carte in carte_destinations:
+            choix_i = input("Voulez vous prendre la carte:", carte, "Oui(o)//Non(n)")
+
+            if choix_i == 'o':
+                self.cartes_destinations.append(carte)
+            elif choix_i == 'n':
+                pass
+            else:
+                print("Choix invalide, tanpis vous n'aurez pas la carte...")
+
+        return True
+
+
     def jouer(self):
         super().jouer()
         action_fait = False
@@ -66,8 +96,12 @@ class Humain(Joueur):
                 else:
                     print("La route n'a pas ete construire")
 
-            elif choix == "d":
-                pass
+            elif choix == "d":  # Choix de carte destination
+                if self.prendre_cartes_destinations():
+                    action_fait = True
+                else:
+                    print("Vous n'avez pas pus prendre de carte destinations")
+
             else:
                 print("Le choix n'est pas valide")
 
