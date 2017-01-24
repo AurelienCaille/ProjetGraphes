@@ -34,11 +34,7 @@ class Graph(object):
         if from_node in self.nodes and to_node in self.nodes:
             self.edges.append((from_node, to_node, value))
             self.adjacency_list[from_node].append(to_node)
-<<<<<<< HEAD
             self.adjacency_list_valued[from_node].append((to_node, value))
-=======
-            self.adjacency_list_valued[from_node].append(to_node, value)
->>>>>>> 8753c5016880c67ce391d4a9cbe59016e8dc8c98
         else:
             raise NameError('Nodes dosnt exist in this current graph')
 
