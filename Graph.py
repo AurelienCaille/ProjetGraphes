@@ -5,12 +5,12 @@ class Graph(object):
     Class representing a graph
     """
     def __init__(self):
-
+        
         self.nodes = set()
         self.edges = []
         self.adjacency_list = {}
         self.adjacency_list_valued = {}
-
+        self.open_graph()
 
     def add_a_node(self, node_name):
         """
@@ -34,7 +34,11 @@ class Graph(object):
         if from_node in self.nodes and to_node in self.nodes:
             self.edges.append((from_node, to_node, value))
             self.adjacency_list[from_node].append(to_node)
+<<<<<<< HEAD
+            self.adjacency_list_valued[from_node].append((to_node, value))
+=======
             self.adjacency_list_valued[from_node].append(to_node, value)
+>>>>>>> 8753c5016880c67ce391d4a9cbe59016e8dc8c98
         else:
             raise NameError('Nodes dosnt exist in this current graph')
 
@@ -260,16 +264,9 @@ class Graph(object):
                 
 
     def __str__(self):
-
-
-
-
-
-
         """
         Return a string for a visual representation of the current graph
         """
-        
         #Display effects
         strGraph = ""
         strGraph += "*"*24
@@ -301,9 +298,11 @@ class Graph(object):
         for from_node, to_node, value in self.edges:
             strGraph += from_node
             strGraph += "-- "
-            strGraph += value
+            strGraph += value[0]
             strGraph += " ->"
             strGraph += to_node
+            strGraph += " "
+            strGraph += value[1]
             strGraph += "\n"
 
         #Display ending display :)
@@ -315,15 +314,20 @@ class Graph(object):
 
         return strGraph
 
+    def open_graph(self):
+        """ 
+        Methode to open and read the map and transform it in graph 
+        """
+        file = open("cbe.csv", "r", encoding = 'utf8')
+        cbe = file.read()
+        cbe = cbe.split("\n")
+        del(cbe[0])
+        for elt in cbe:
+            cbe = elt.split(":")
+            if len(cbe) == 4:
+                self.add_a_node(cbe[0])
+                self.add_a_node(cbe[1])
+                self.add_an_edge(cbe[0], cbe[1], (cbe[2], cbe[3]))
 
-        
-
-        
-
-        
-            
-
-        
-
-        
-        
+G = Graph()
+print(G)

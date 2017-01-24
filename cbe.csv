@@ -1,0 +1,49 @@
+Ville A:Ville B:Distance:Couleur
+Brest:Carhaix:5:Blanc
+Brest:Perros-Guirec:5:Noir
+Brest:Perros-Guirec:5:Vert
+Brest:Quimper:3:Gris
+Carhaix:Brest:5:Blanc
+Carhaix:Perros-Guirec:4:Gris
+Carhaix:Pontivy:3:Noir
+Carhaix:Pontivy:3:Rouge
+Dinan:Pontivy:5:Jaune
+Dinan:Rennes:3:Rose
+Dinan:Saint Malo:1:Gris
+Dinan:Saint Malo:1:Gris
+Lorient:Pontivy:3:Rose
+Lorient:Quimper:4:Orange
+Lorient:Quimper:4:Rose
+Lorient:Vannes:3:Gris
+Lorient:Vannes:3:Gris
+Perros-Guirec:Brest:5:Noir
+Perros-Guirec:Brest:5:Vert
+Perros-Guirec:Carhaix:4:Gris
+Ploërmel:Pontivy:3:Jaune
+Ploërmel:Pontivy:3:Orange
+Ploërmel:Rennes:4:Bleu
+Ploërmel:Rennes:4:Rouge
+Ploërmel:Vannes:3:Blanc
+Pontivy:Carhaix:3:Noir
+Pontivy:Carhaix:3:Rouge
+Pontivy:Dinan:5:Jaune
+Pontivy:Lorient:3:Rose
+Pontivy:Ploërmel:3:Jaune
+Pontivy:Ploërmel:3:Orange
+Pontivy:Quimper:6:Vert
+Pontivy:Rennes:7:Blanc
+Pontivy:Vannes:3:Bleu
+Quimper:Brest:3:Gris
+Quimper:Lorient:4:Orange
+Quimper:Lorient:4:Rose
+Quimper:Pontivy:6:Vert
+Rennes:Dinan:3:Rose
+Rennes:Ploërmel:4:Bleu
+Rennes:Ploërmel:4:Rouge
+Rennes:Pontivy:7:Blanc
+Saint Malo:Dinan:1:Gris
+Saint Malo:Dinan:1:Gris
+Vannes:Lorient:3:Gris
+Vannes:Lorient:3:Gris
+Vannes:Ploërmel:3:Blanc
+Vannes:Pontivy:3:Bleu
