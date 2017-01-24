@@ -76,7 +76,8 @@ class Joueur(object):
         # On recupere alors la longueur et couleur de la route
         for edge in self.plateau_de_jeu.map.edges:
             if edge[0] == depart and edge[1] == arrive:
-                pass  # !!!!!!!!!! on recupere deux informations necessaire !!! a finir
+                longueur_route = edge[2][0]
+                couleur_route = edge[2][1]
 
         if couleur_route != "Gris" and couleur_route != couleur_desiree:
             print("La couleur de la route et la couleur desiree ne sont pas les memes !!!")
