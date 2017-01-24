@@ -10,6 +10,7 @@ class Graph(object):
         self.edges = []
         self.adjacency_list = {}
         self.adjacency_list_valued = {}
+        self.open_graph()
 
     def add_a_node(self, node_name):
         """
@@ -311,6 +312,7 @@ class Graph(object):
         file = open("cbe.csv", "r", encoding = 'utf8')
         cbe = file.read()
         cbe = cbe.split("\n")
+        del(cbe[0])
         for elt in cbe:
             cbe = elt.split(":")
             if len(cbe) == 4:
@@ -319,5 +321,4 @@ class Graph(object):
                 self.add_an_edge(cbe[0], cbe[1], (cbe[2], cbe[3]))
 
 G = Graph()
-G.OpenGraph()
 print(G)
