@@ -34,7 +34,11 @@ class Graph(object):
         if from_node in self.nodes and to_node in self.nodes:
             self.edges.append((from_node, to_node, value))
             self.adjacency_list[from_node].append(to_node)
+<<<<<<< HEAD
             self.adjacency_list_valued[from_node].append((to_node, value))
+=======
+            self.adjacency_list_valued[from_node].append(to_node, value)
+>>>>>>> 8753c5016880c67ce391d4a9cbe59016e8dc8c98
         else:
             raise NameError('Nodes dosnt exist in this current graph')
 
@@ -44,8 +48,10 @@ class Graph(object):
         """
         colors_nodes = {}
         distance = {}
-        from_node = {}
+        parent_node = {}
 
+        # On initialise en coloriant les nodes en blanc et en les mettant en distance infinie
+        # Le depart est mis a distance 0 de lui meme btw
         for node in self.nodes:
             colors_nodes[node] = "white"
             distance[node] = float('inf')
@@ -55,24 +61,27 @@ class Graph(object):
 
         while all(colors_nodes != "black"):
 
-            #calcule du node gris le plus proche
+            # Selection du node gris le plus proche
             distance_min = float('inf')
             for nodes in distance:
                 if distance[nodes] < distance_min and colors_nodes[nodes] == "grey":
                     actual_node = nodes
 
-            #etablir les distances le plus courte a partir du node actuel:
+            # Etablir les distances le plus courte a partir du node selectione:
             for voisins, value in self.adjacency_list_valued[actual_node]:
                 if colors_nodes[voisins] == "white":
                     distance[voisins] = distance[actual_node] + int(value)
-                    from_node[voisins] = actual_node
+                    parent_node[voisins] = actual_node
                     colors_nodes[voisins] = "grey"
+
                 elif colors_nodes[voisins] == "grey":
-                    distance[voisins] = min(distance[voisins], distance[actual_node] + int(value))
-                    from_node[voisins] = actual_node
+                    if distance[actual_node] + int(value) < distance[voisins]:
+                        distance[voisins] = distance[actual_node] + int(value)
+                        parent_node[voisins] = actual_node
 
             colors_nodes[actual_node] = "black"
 
+        # Remonter // Determiner le return!!!!!!!!
 
     def composantes_connexes(self, departure):
         """

@@ -31,16 +31,15 @@ class Joueur(object):
         """ Calcule le score final du joueur selon les regles du jeu CF: ManuelDuJoueur"""
         pass
 
-
-    def prendre_cartes_wagons(self, indice1, indice2):
+    def prendre_cartes_wagons(self, indice_1, indice_2):
         """
         Selectionne 2 des cartes wagons visibles
         et complete les cartes manquantes sur le plateau de jeu
         """
 
         # On ajoute les cartes a la mains
-        nouvelle_carte_1 = self.plateau_de_jeu.cartes_wagon_visibles.pop(indice1)
-        nouvelle_carte_2 = self.plateau_de_jeu.cartes_wagon_visibles.pop(indice2)
+        nouvelle_carte_1 = self.plateau_de_jeu.cartes_wagon_visibles.pop(indice_1)
+        nouvelle_carte_2 = self.plateau_de_jeu.cartes_wagon_visibles.pop(indice_2)
 
         print("Les cartes piochees sont:", nouvelle_carte_1, nouvelle_carte_2)
 
@@ -77,7 +76,8 @@ class Joueur(object):
         # On recupere alors la longueur et couleur de la route
         for edge in self.plateau_de_jeu.map.edges:
             if edge[0] == depart and edge[1] == arrive:
-                pass
+                longueur_route = edge[2][0]
+                couleur_route = edge[2][1]
 
         if couleur_route != "Gris" and couleur_route != couleur_desiree:
             print("La couleur de la route et la couleur desiree ne sont pas les memes !!!")
@@ -89,16 +89,12 @@ class Joueur(object):
             return False
 
         # On verifie que l'on a bien toutes les cartes
-        if not len([carte_wagon \
-        for carte_wagon in self.cartes_wagons \
-        if carte_wagon.couleur == "Multicolore"]) >= nombre_locomotive:
+        if not len([carte_wagon for carte_wagon in self.cartes_wagons if carte_wagon.couleur == "Multicolore"]) >= nombre_locomotive:
 
             print("Le joueur n'a pas le nombre de locomotive demandee!!!")
             return False
 
-        if not len([carte_wagon \
-        for carte_wagon in self.cartes_wagons \
-        if carte_wagon.couleur == couleur_desiree]) >= longueur_route - nombre_locomotive:
+        if not len([carte_wagon for carte_wagon in self.cartes_wagons if carte_wagon.couleur == couleur_desiree]) >= longueur_route - nombre_locomotive:
 
             print("Le joueur n'a pas assez de carte wagon de la bonne couleur")
             return False
