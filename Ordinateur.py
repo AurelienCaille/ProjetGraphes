@@ -25,7 +25,7 @@ class Ordinateur(Joueur):
                     resultat = dijkstra_resultat[arrive]
         else:
             # On pioche 1 seule carte_destination  # Strategie A DEFINIR
-            pass
+            self.cartes_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
             self.adversaire.jouer()
 
         # On verifie si on peut construire le chemin le plus court
@@ -38,11 +38,3 @@ class Ordinateur(Joueur):
         else:
             self.prendre_cartes_wagons(0, 1) # !!!!!! NE CHOISIS PAS LES WAGONS CORRECTEMENTS
             self.adversaire.jouer()
-
-
-
-
-
-
-
-        self.adversaire.jouer()
