@@ -29,6 +29,21 @@ class PlateauDeJeu(object):
         self.joueur1.adversaire = joueur2
         self.joueur2.adversaire = joueur1
 
+        # On ajoute les cartes wagons visibles
+        for dummy_i in range(4):
+            self.cartes_wagon_visibles.append(self.pioche_carte_wagon.piocher())
+
+    def piocher_cartes_wagon(self, indice_1, indice_2):
+
+        carte_1 = self.cartes_wagon_visibles.pop(indice_1)
+        carte_2 = self.cartes_wagon_visibles.pop(indice_2 - 1)
+
+        self.cartes_wagon_visibles.append(self.pioche_carte_wagon.piocher())
+        self.cartes_wagon_visibles.append(self.pioche_carte_wagon.piocher())
+
+        return carte_1, carte_2
+
+
     def jouer(self):
         """ Lance la partie de jeu """
 
