@@ -1,4 +1,5 @@
 import random
+from CarteDestination import CarteDestination
 class PiocheCarteDestination(object):
     """ Classe representant une piochde de carte destination"""
     def __init__(self):
@@ -7,6 +8,7 @@ class PiocheCarteDestination(object):
         """
 
         self.pioche = []
+        self.open_file()
 
     def melanger(self):
         """
@@ -25,6 +27,22 @@ class PiocheCarteDestination(object):
         return la lst de la pile
         """
         return str(self.pioche)
+
+    def open_file(self):
+        """ Ouvre le fichier contenant la liste des cartes destinations """
+
+        file_destination = open("cartes_objectifs_-_version_epuree.csv", "r", encoding='utf8')
+        file_destination = file_destination.read()
+        file_destination = file_destination.split("\n")[1:]
+
+        for lign in file_destination:
+            lign_split = lign.split(":")
+
+            if len(lign_split) == 3:
+                depart = lign_split[0]
+                arrive = lign_split[1]
+                point = lign_split[2]
+                self.pioche.append(CarteDestination(depart, arrive, point))
 
 if __name__ == '__main__':
 
