@@ -130,6 +130,8 @@ class Graph(object):
                 valued_destinations[city][1].append(copy_parent_node[city])
                 copy_distance[city] = copy_distance[copy_parent_node[city]]
                 copy_parent_node[city] = copy_parent_node[copy_parent_node[city]]
+        
+        return valued_destinations
 
     def composantes_connexes(self, departure):
         """
@@ -375,12 +377,8 @@ class Graph(object):
             if len(cbe) == 4:
                 self.add_a_node(cbe[0])
                 self.add_a_node(cbe[1])
-<<<<<<< HEAD
-                self.add_an_edge(cbe[0], cbe[1], (cbe[2], cbe[3]))
-=======
                 self.add_an_edge(cbe[0], cbe[1], (cbe[2], cbe[3]))
 
 if __name__ == "__main__":
     G = Graph()
     print(G)
->>>>>>> 52b69c36c5901acb28540b7277ab4909e705b97d
