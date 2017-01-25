@@ -26,7 +26,7 @@ class PiocheCartesWagon:
         supprime et retourne un element de la pile de cartes wagons
         """
 
-        if len(self.pioche == 0):
+        if len(self.pioche) == 0:
             self.melangerPioche()
 
         return self.pioche.pop()
