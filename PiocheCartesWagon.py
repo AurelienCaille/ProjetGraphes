@@ -1,4 +1,6 @@
 import random
+from Wagon import Wagon
+COULEURS = ["Bleu", "Rose", "Orange", "Blanc", "Vert", "Jaune", "Noir", "Rouge"]
 class PiocheCartesWagon:
     def __init__(self):
         """
@@ -8,6 +10,14 @@ class PiocheCartesWagon:
 
         self.pioche = []
         self.defausse = []
+
+        # On ajoute les cartes wagons
+
+        for couleur in COULEURS:
+            for dummy_i in range(12):
+                self.pioche.append(Wagon(couleur))
+
+        self.melangerPioche()
 
 
     def melangerPioche(self):
