@@ -41,12 +41,15 @@ class Humain(Joueur):
         super().jouer()
         action_fait = False
 
+        
+
         while action_fait is False:
             choix = input("Que voulez-vous faire?\
             \n-Prendre des cartes Wagon (w)\
             \n-Prendre une carte locomotive (l)\
             \n-Prendre possession d'une route(r)\
-            \n-Prendre des cartes destination supplementaires(d)")
+            \n-Prendre des cartes destination supplementaires(d)\
+            \n-Liste des routes possibles(rp)")
 
             if choix == "w":  # Selection des deux cartes wagons
                 choix_carte_1 = input("Quel est l'indice de la 1er carte selectionnee (0-4)?")
@@ -101,6 +104,9 @@ class Humain(Joueur):
                     action_fait = True
                 else:
                     print("Vous n'avez pas pus prendre de carte destinations")
+
+            elif  choix == "rp":
+                print(self.plateau_de_jeu.construction_possible)
 
             else:
                 print("Le choix n'est pas valide")
