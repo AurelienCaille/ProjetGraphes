@@ -14,9 +14,10 @@ class PlateauDeJeu(object):
         :self.joueur1: j1 passer en argument passe en attribut du plateau
         :self.joueur2: pareil que pour j1
         """
-        self.map = Graph() #Code stephanie
+        self.map = Graph()
         self.construction = Graph()
         self.construction.nodes = self.map.nodes
+        self.construction_possible = []
         self.cartes_wagon_visibles = []
         self.pioche_carte_wagon = PiocheCartesWagon()
         self.pioche_carte_destination = PiocheCarteDestination()
@@ -32,6 +33,10 @@ class PlateauDeJeu(object):
         # On ajoute les cartes wagons visibles
         for dummy_i in range(4):
             self.cartes_wagon_visibles.append(self.pioche_carte_wagon.piocher())
+
+        # On fait la liste des constructions de route possible
+        for edge in self.map.edges:
+            self.construction_possible.append((edge[0], edge[1]))
 
     def piocher_cartes_wagon(self, indice_1, indice_2):
 
