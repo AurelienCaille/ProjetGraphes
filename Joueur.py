@@ -76,6 +76,13 @@ class Joueur(object):
             print("La route n'existe pas!!!")
             return False
 
+        # On verifie que la route n'a pas ete deja construite
+        if (depart, arrive) in self.plateau_de_jeu.construction_possible\
+        or (arrive, depart) in self.plateau_de_jeu.construction_possible:
+
+            print("La route a deja ete construite")
+            return False
+
         # On recupere alors la longueur et couleur de la route
         for edge in self.plateau_de_jeu.map.edges:
             if edge[0] == depart and edge[1] == arrive:
@@ -111,5 +118,8 @@ class Joueur(object):
             self.cartes_wagons.remove(Wagon(couleur_desiree))
         for dummy_i in range(nombre_locomotive):
             self.cartes_wagons.remove(Wagon("Multicolore"))
+
+        self.plateau_de_jeu.construction_possible.remove((depart, arrive))
+        self.plateau_de_jeu.construction_possible.remove((arrive, depart))
 
         return True
