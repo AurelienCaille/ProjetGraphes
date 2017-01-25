@@ -325,5 +325,6 @@ class Graph(object):
                 self.add_a_node(cbe[1])
                 self.add_an_edge(cbe[0], cbe[1], (cbe[2], cbe[3]))
 
-G = Graph()
-print(G)
+if __name__ == "__main__":
+    G = Graph()
+    print(G)
