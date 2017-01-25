@@ -25,7 +25,11 @@ class Joueur(object):
 
     def jouer(self):
         """ Methode abstraite lancant le tour du Joueur """
+        print("-----------------------------------------------------------")
         print("Le joueur", self.couleur, "commence son tour")
+        print("Le joueur a:")
+        print("Cartes wagons:", self.cartes_wagons)
+        print("Cartes destinations:", self.cartes_destinations)
 
     def calculer_score_finale(self):
         """ Calcule le score final du joueur selon les regles du jeu CF: ManuelDuJoueur"""
@@ -38,8 +42,7 @@ class Joueur(object):
         """
 
         # On ajoute les cartes a la mains
-        nouvelle_carte_1 = self.plateau_de_jeu.cartes_wagon_visibles.pop(indice_1)
-        nouvelle_carte_2 = self.plateau_de_jeu.cartes_wagon_visibles.pop(indice_2)
+        nouvelle_carte_1, nouvelle_carte_2 = self.plateau_de_jeu.piocher_cartes_wagon(indice_1, indice_2)
 
         print("Les cartes piochees sont:", nouvelle_carte_1, nouvelle_carte_2)
 
@@ -67,8 +70,8 @@ class Joueur(object):
         couleur_route = None
 
         # On verifie que la route existe
-        if not depart in self.plateau_de_jeu.graphe.adjacency_list or not\
-            arrive in self.plateau_de_jeu.graphe.adjacency_list[depart]:
+        if not depart in self.plateau_de_jeu.map.adjacency_list or not\
+            arrive in self.plateau_de_jeu.map.adjacency_list[depart]:
 
             print("La route n'existe pas!!!")
             return False
@@ -76,7 +79,7 @@ class Joueur(object):
         # On recupere alors la longueur et couleur de la route
         for edge in self.plateau_de_jeu.map.edges:
             if edge[0] == depart and edge[1] == arrive:
-                longueur_route = edge[2][0]
+                longueur_route = int(edge[2][0])
                 couleur_route = edge[2][1]
 
         if couleur_route != "Gris" and couleur_route != couleur_desiree:
