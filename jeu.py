@@ -27,6 +27,8 @@ if __name__ == "__main__":
 
     # On cree le plateau du jeu
     plateau = PlateauDeJeu(joueur_1, joueur_2)
+    joueur_1.plateau_de_jeu = plateau
+    joueur_2.plateau_de_jeu = plateau
 
     # On lance la partie
     plateau.jouer()
