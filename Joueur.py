@@ -22,6 +22,7 @@ class Joueur(object):
         self.reserve_wagon = 45
         self.plateau_de_jeu = None
         self.couleur = couleur
+        self.dernier_tour = False
 
     def jouer(self):
         """ Methode abstraite lancant le tour du Joueur """
@@ -33,6 +34,12 @@ class Joueur(object):
 
     def calculer_score_finale(self):
         """ Calcule le score final du joueur selon les regles du jeu CF: ManuelDuJoueur"""
+
+        # On calcule le score naturel des routes
+
+        # On calcule le score gagne ou perdu des cartes destinations
+
+        # On calcule le score bonus de la route la plus longue
         pass
 
     def prendre_cartes_wagons(self, indice_1, indice_2):
