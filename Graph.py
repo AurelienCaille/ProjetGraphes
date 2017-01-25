@@ -314,7 +314,7 @@ class Graph(object):
         """ 
         Methode to open and read the map and transform it in graph 
         """
-        file = open("cbe.csv", "r", encoding = 'utf8')
+        file = open("cartes_bretagne_-_version_epuree.csv", "r", encoding = 'utf8')
         cbe = file.read()
         cbe = cbe.split("\n")
         del(cbe[0])
