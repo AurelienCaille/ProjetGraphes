@@ -41,8 +41,6 @@ class Humain(Joueur):
         super().jouer()
         action_fait = False
 
-        
-
         while action_fait is False:
             choix = input("Que voulez-vous faire?\
             \n-Prendre des cartes Wagon (w)\
@@ -109,10 +107,19 @@ class Humain(Joueur):
             elif choix == "rp":  # On Affiche les routes encore constructibles
                 print(self.plateau_de_jeu.construction_possible)
 
-            elif choix == "c":
+            elif choix == "c":  # On affiche la carte du jeu
                 print(self.plateau_de_jeu.map)
 
             else:
                 print("Le choix n'est pas valide")
 
+            # On verifie que le joueur a plus de 2 wagons
+        if not self.dernier_tour:
+            self.plateau_de_jeu.finir_partie()
+
+        if self.reserve_wagon < 3:
+            print("Plus qu'un seul tour!")
+            self.dernier_tour = True
+
+        input("Appuyer sur une touche pour faire jouer votre adversaire")
         self.adversaire.jouer()

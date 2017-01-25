@@ -38,6 +38,18 @@ class PlateauDeJeu(object):
         for edge in self.map.edges:
             self.construction_possible.append((edge[0], edge[1]))
 
+    def finir_partie(self):
+        """ Fini la partie, calcule le score du gagnant et l'affiche """
+        score_joueur_1 = self.joueur1.calculer_score_finale()
+        score_joueur_2 = self.joueur2.calculer_score_finale()
+
+        if score_joueur_1 > score_joueur_2:
+            print("Le joueur 1 a gagne la partie !!! :)")
+        elif score_joueur_1 < score_joueur_2:
+            print("Le joueur 2 a gagne la partie !!! :)")
+        else:
+            print("Vous etes arrive a egalite !!!!")
+
     def piocher_cartes_wagon(self, indice_1, indice_2):
 
         carte_1 = self.cartes_wagon_visibles.pop(indice_1)
