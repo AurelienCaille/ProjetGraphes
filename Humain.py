@@ -49,7 +49,8 @@ class Humain(Joueur):
             \n-Prendre une carte locomotive (l)\
             \n-Prendre possession d'une route(r)\
             \n-Prendre des cartes destination supplementaires(d)\
-            \n-Liste des routes possibles(rp)")
+            \n-Liste des routes possibles(rp)\
+            \n-Affichage de la carte du jeu (c)")
 
             if choix == "w":  # Selection des deux cartes wagons
                 choix_carte_1 = input("Quel est l'indice de la 1er carte selectionnee (0-4)?")
@@ -105,8 +106,11 @@ class Humain(Joueur):
                 else:
                     print("Vous n'avez pas pus prendre de carte destinations")
 
-            elif  choix == "rp":
+            elif choix == "rp":  # On Affiche les routes encore constructibles
                 print(self.plateau_de_jeu.construction_possible)
+
+            elif choix == "c":
+                print(self.plateau_de_jeu.map)
 
             else:
                 print("Le choix n'est pas valide")
