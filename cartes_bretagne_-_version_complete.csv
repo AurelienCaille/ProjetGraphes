@@ -1,0 +1,184 @@
+Ville A:Ville B:Distance:Couleur
+Ancenis:Chateaubriant:3:Gris
+Ancenis:Clisson:2:Vert
+Ancenis:Nantes:2:Bleu
+Belle Ile:Guérande:4:Blanc
+Belle Ile:Guérande:4:Rouge
+Belle Ile:Les Glénans:6:Jaune
+Belle Ile:Lorient:3:Gris
+Belle Ile:Pornic:6:Bleu
+Belle Ile:Vannes:3:Gris
+Brest:Carhaix:5:Blanc
+Brest:Crozon:1:Gris
+Brest:Crozon:1:Gris
+Brest:Morlaix:4:Noir
+Brest:Morlaix:4:Vert
+Brest:Ouessant:3:Jaune
+Cancale:Mont Saint Michel:2:Jaune
+Cancale:Saint Malo:1:Bleu
+Carhaix:Brest:5:Banc
+Carhaix:Douarnenez:4:Bleu
+Carhaix:Douarnenez:4:Orange
+Carhaix:Morlaix:3:Gris
+Carhaix:Pontivy:3:Noir
+Carhaix:Pontivy:3:Rouge
+Chateaubriant:Ancenis:3:Gris
+Chateaubriant:Nantes:4:Gris
+Chateaubriant:Rennes:3:Jaune
+Chateaubriant:Vitré:3:Rouge
+Clisson:Ancenis:2:Vert
+Clisson:Nantes:2:Gris
+Concarneau:Les Glénans:1:Rouge
+Concarneau:Lorient:3:Orange
+Concarneau:Lorient:3:Rose
+Concarneau:Quimper:1:Gris
+Concarneau:Quimper:1:Gris
+Crozon:Brest:1:Gris
+Crozon:Brest:1:Gris
+Crozon:Douarnenez:2:Noir
+Crozon:Les Glénans:6:Rose
+Crozon:Ouessant:4:Orange
+Dinan:Fougères:4:Blanc
+Dinan:Loudéac:4:Jaune
+Dinan:Mont Saint Michel:3:Orange
+Dinan:Rennes:3:Rose
+Dinan:Saint Brieuc:3:Vert
+Dinan:Saint Malo:1:Gris
+Dinan:Saint Malo:1:Gris
+Douarnenez:Carhaix:4:Bleu
+Douarnenez:Carhaix:4:Orange
+Douarnenez:Crozon:2:Noir
+Douarnenez:Les Glénans:3:Vert
+Douarnenez:Quimper:1:Gris
+Douarnenez:Quimper:1:Gris
+Fougères:Dinan:4:Blanc
+Fougères:Liffré:2:Gris
+Fougères:Mont Saint Michel:4:Rose
+Fougères:Mont Saint Michel:4:Vert
+Fougères:Vitré:2:Orange
+Guérande:Belle Ile:4:Blanc
+Guérande:Belle Ile:4:Rouge
+Guérande:Pornic:4:Noir
+Guérande:Redon:3:Bleu
+Guérande:Saint Nazaire:1:Gris
+Guingamp:Paimpol:2:Gris
+Guingamp:Paimpol:2:Gris
+Guingamp:Perros-Guirec:2:Gris
+Guingamp:Saint Brieuc:2:Gris
+Guingamp:Saint Brieuc:2:Gris
+Les Glénans:Belle Ile:6:Jaune
+Les Glénans:Concarneau:1:Rouge
+Les Glénans:Crozon:6:Rose
+Les Glénans:Douarnenez:3:Vert
+Liffré:Fougères:2:Gris
+Liffré:Rennes:1:Vert
+Lorient:Belle Ile:3:Gris
+Lorient:Concarneau:3:Orange
+Lorient:Concarneau:3:Rose
+Lorient:Pontivy:3:Rose
+Lorient:Vannes:3:Gris
+Lorient:Vannes:3:Gris
+Loudéac:Dinan:4:Jaune
+Loudéac:Perros-Guirec:6:Orange
+Loudéac:Pontivy:1:Gris
+Loudéac:Pontivy:1:Gris
+Loudéac:Rennes:6:Blanc
+Loudéac:Saint Brieuc:2:Gris
+Loudéac:Saint Brieuc:2:Gris
+Mont Saint Michel:Cancale:2:Jaune
+Mont Saint Michel:Dinan:3:Orange
+Mont Saint Michel:Fougères:4:Rose
+Mont Saint Michel:Fougères:4:Vert
+Morlaix:Brest:4:Noir
+Morlaix:Brest:4:Vert
+Morlaix:Carhaix:3:Gris
+Morlaix:Perros-Guirec:2:Jaune
+Morlaix:Perros-Guirec:2:Rouge
+Nantes:Ancenis:2:Bleu
+Nantes:Chateaubriant:4:Gris
+Nantes:Clisson:2:Gris
+Nantes:Pornic:4:Gris
+Nantes:Redon:4:Jaune
+Nantes:Redon:4:Rose
+Nantes:Rennes:6:Noir
+Nantes:Saint Nazaire:4:Orange
+Ouessant:Brest:3:Jaune
+Ouessant:Crozon:3:Orange
+Ouessant:Perros-Guirec:7:Gris
+Paimpol:Guingamp:2:Gris
+Paimpol:Guingamp:2:Gris
+Paimpol:Perros-Guirec:2:Rose
+Paimpol:Saint Malo:6:Rouge
+Perros-Guirec:Guingamp:2:Gris
+Perros-Guirec:Loudéac:6:Orange
+Perros-Guirec:Morlaix:2:Jaune
+Perros-Guirec:Morlaix:2:Rouge
+Perros-Guirec:Ouessant:7:Gris
+Perros-Guirec:Paimpol:2:Rose
+Ploërmel:Pontivy:3:Jaune
+Ploërmel:Pontivy:3:Orange
+Ploërmel:Redon:3:Noir
+Ploërmel:Redon:3:Vert
+Ploërmel:Rennes:4:Bleu
+Ploërmel:Rennes:4:Rouge
+Ploërmel:Vannes:3:Blanc
+Pontivy:Carhaix:3:Noir
+Pontivy:Carhaix:3:Rouge
+Pontivy:Lorient:3:Rose
+Pontivy:Loudéac:1:Gris
+Pontivy:Loudéac:1:Gris
+Pontivy:Ploërmel:3:Jaune
+Pontivy:Ploërmel:3:Orange
+Pontivy:Quimper:6:Vert
+Pontivy:Vannes:3:Bleu
+Pornic:Belle Ile:6:Bleu
+Pornic:Guérande:4:Noir
+Pornic:Nantes:4:Gris
+Pornic:Redon:3:Gris
+Pornic:Saint Nazaire:2:Vert
+Quimper:Concarneau:1:Gris
+Quimper:Concarneau:1:Gris
+Quimper:Douarnenez:1:Gris
+Quimper:Douarnenez:1:Gris
+Quimper:Pontivy:6:Vert
+Redon:Guérande:3:Bleu
+Redon:Nantes:4:Jaune
+Redon:Nantes:4:Rose
+Redon:Ploërmel:3:Noir
+Redon:Ploërmel:3:Vert
+Redon:Saint Nazaire:3:Gris
+Redon:Vannes:3:Blanc
+Rennes:Chateaubriant:3:Jaune
+Rennes:Dinan:3:Rose
+Rennes:Liffré:1:Vert
+Rennes:Loudéac:6:Blanc
+Rennes:Nantes:6:Noir
+Rennes:Ploërmel:4:Bleu
+Rennes:Ploërmel:4:Rouge
+Rennes:Vitré:2:Gris
+Rennes:Vitré:2:Gris
+Saint Brieuc:Dinan:3:Vert
+Saint Brieuc:Guingamp:2:Gris
+Saint Brieuc:Guingamp:2:Gris
+Saint Brieuc:Loudéac:2:Gris
+Saint Brieuc:Loudéac:2:Gris
+Saint Brieuc:Saint Malo:3:Noir
+Saint Malo:Cancale:1:Bleu
+Saint Malo:Dinan:1:Gris
+Saint Malo:Dinan:1:Gris
+Saint Malo:Paimpol:6:Rouge
+Saint Malo:Saint Brieuc:3:Noir
+Saint Nazaire:Guérande:1:Gris
+Saint Nazaire:Nantes:4:Orange
+Saint Nazaire:Pornic:2:Vert
+Saint Nazaire:Redon:3:Gris
+Vannes:Belle Ile:3:Gris
+Vannes:Lorient:3:Gris
+Vannes:Lorient:3:Gris
+Vannes:Ploërmel:3:Blanc
+Vannes:Pontivy:3:Bleu
+Vannes:Redon:3:Blanc
+Vitré:Chateaubriant:3:Rouge
+Vitré:Fougères:2:Orange
+Vitré:Rennes:2:Gris
+Vitré:Rennes:2:Gris
