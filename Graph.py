@@ -5,7 +5,23 @@ class Graph(object):
     Class representing a graph
     """
     def __init__(self):
-        
+        """
+        ~~~~~~~~
+        :self.attribut: description :
+
+        :self.nodes: set of nodes in Graph
+        :self.edges: lst of arc valued in Graph
+            (from_node, to_node, value = (distance, color))
+        :self.adjacency_liste: dict of adjacency list
+            {from_node : [to_node1, ..., to_nodeN]}
+        :self.adjacency_liste_valued: dict of adjacency list valued
+            {from_node : [(to_node1, value1), ..., (to_nodeN, valueN)]}
+        ~~~~~~~~
+        :self.method: methode at initialisation :
+        :self.open_graph(): open the 'map'.csv file
+                            and make it a Graph
+        ~~~~~~~~
+        """
         self.nodes = set()
         self.edges = []
         self.adjacency_list = {}
@@ -40,11 +56,26 @@ class Graph(object):
 
     def dijkstra(self, departure):
         """
-        Parcours le graphe et donne le chemin le plus court pour chaque autre sommet
+        Parcours le graphe a partir de departure en valuant les chemains
+        retourne le dictionnaire:
+        {ville_accesible:([distance_N, ..., distance_departe][ville_N, ..., ville_depart])}
+        exemple, dijkstra('Vannes') retourne:
+        {'Brest': ([11, 6, 3], ['Carhaix', 'Pontivy', 'Vannes']),
+        'Carhaix': ([6, 3], ['Pontivy', 'Vannes']),
+        'Dinan': ([8, 3], ['Pontivy', 'Vannes']),
+        'Lorient': ([3], ['Vannes']),
+        'Perros-Guirec': ([10, 6, 3], ['Carhaix', 'Pontivy', 'Vannes']),
+        'Ploermel': ([3], ['Vannes']),
+        'Pontivy': ([3], ['Vannes']),
+        'Quimper': ([9, 3], ['Pontivy', 'Vannes']),
+        'Rennes': ([7, 3], ['Ploermel', 'Vannes']),
+        'Saint Malo': ([9, 8, 3], ['Dinan', 'Pontivy', 'Vannes']),
+        'Vannes': ([], [])}
         """
         colors_nodes = {}
         distance = {}
         parent_node = {}
+        colors_nodes_listes = [False]
 
         # On initialise en coloriant les nodes en blanc et en les mettant en distance infinie
         # Le depart est mis a distance 0 de lui meme btw
@@ -55,7 +86,12 @@ class Graph(object):
         distance[departure] = 0
         colors_nodes[departure] = "grey"
 
-        while all(colors_nodes != "black"):
+        # Main: boucle tant que les nodes ne sont pas tous noir
+        while False in colors_nodes_listes:
+            colors_nodes_listes = []
+            for nodes in colors_nodes:
+                if colors_nodes[nodes] == "white":
+                    colors_nodes_listes.append(False)
 
             # Selection du node gris le plus proche
             distance_min = float('inf')
@@ -63,21 +99,37 @@ class Graph(object):
                 if distance[nodes] < distance_min and colors_nodes[nodes] == "grey":
                     actual_node = nodes
 
-            # Etablir les distances le plus courte a partir du node selectione:
+            # Etablir les distances les plus courte a partir du node selectione:
             for voisins, value in self.adjacency_list_valued[actual_node]:
                 if colors_nodes[voisins] == "white":
-                    distance[voisins] = distance[actual_node] + int(value)
+                    distance[voisins] = distance[actual_node] + int(value[0])
                     parent_node[voisins] = actual_node
                     colors_nodes[voisins] = "grey"
 
                 elif colors_nodes[voisins] == "grey":
-                    if distance[actual_node] + int(value) < distance[voisins]:
-                        distance[voisins] = distance[actual_node] + int(value)
+                    if distance[actual_node] + int(value[0]) < distance[voisins]:
+                        distance[voisins] = distance[actual_node] + int(value[0])
                         parent_node[voisins] = actual_node
 
             colors_nodes[actual_node] = "black"
 
-        # Remonter // Determiner le return!!!!!!!!
+        # On initialise le dico a renvoyer et ses cles:
+        parent_node[departure] = []
+        distance[departure] = 0
+        valued_destinations = {departure:([], [0])}
+        for destinations in parent_node:
+            valued_destinations[destinations] = ([], [])
+
+        # On rempli le dico en remontant l arbre des chemins pour
+        # Chacun des neuds
+        for city in parent_node:
+            copy_parent_node = parent_node.copy()
+            copy_distance = distance.copy()
+            while copy_parent_node[city] != []:
+                valued_destinations[city][0].append(copy_distance[city])
+                valued_destinations[city][1].append(copy_parent_node[city])
+                copy_distance[city] = copy_distance[copy_parent_node[city]]
+                copy_parent_node[city] = copy_parent_node[copy_parent_node[city]]
 
     def composantes_connexes(self, departure):
         """
@@ -324,6 +376,3 @@ class Graph(object):
                 self.add_a_node(cbe[0])
                 self.add_a_node(cbe[1])
                 self.add_an_edge(cbe[0], cbe[1], (cbe[2], cbe[3]))
-
-G = Graph()
-print(G)
