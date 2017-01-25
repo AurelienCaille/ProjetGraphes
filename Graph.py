@@ -131,6 +131,11 @@ class Graph(object):
                 copy_distance[city] = copy_distance[copy_parent_node[city]]
                 copy_parent_node[city] = copy_parent_node[copy_parent_node[city]]
         
+        #mise en page des cles et valeurs
+        for city in parent_node:
+            valued_destinations[city][0].append(0)
+            valued_destinations[city][1].insert(0, city)
+
         return valued_destinations
 
     def composantes_connexes(self, departure):
