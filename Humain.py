@@ -110,11 +110,21 @@ class Humain(Joueur):
             elif choix == "c":  # On affiche la carte du jeu
                 print(self.plateau_de_jeu.map)
 
+            elif choix == "42":  # Commande cheat permettant d'avoir le plus court chemin entre deux gares
+                depart = input("Gare de départ ?")
+                arrive = input("Gare d'arrive ?")
+
+                try:
+                    dijsktra_resultat = self.plateau_de_jeu.map.dijkstra(depart)
+                    print(dijsktra_resultat[arrive])
+                except:
+                    pass
+
             else:
                 print("Le choix n'est pas valide")
 
             # On verifie que le joueur a plus de 2 wagons
-        if not self.dernier_tour:
+        if self.dernier_tour:
             self.plateau_de_jeu.finir_partie()
 
         if self.reserve_wagon < 3:
