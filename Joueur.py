@@ -23,6 +23,9 @@ class Joueur(object):
         self.plateau_de_jeu = None
         self.couleur = couleur
         self.dernier_tour = False
+        self.point_possession_route = 0
+        self.point_bonus_malus_destination = 0
+        self.score_finale = 0
 
     def jouer(self):
         """ Methode abstraite lancant le tour du Joueur """
@@ -31,16 +34,13 @@ class Joueur(object):
         print("Le joueur a:")
         print("Cartes wagons:", self.cartes_wagons)
         print("Cartes destinations:", self.cartes_destinations)
-
+    
     def calculer_score_finale(self):
         """ Calcule le score final du joueur selon les regles du jeu CF: ManuelDuJoueur"""
-
-        # On calcule le score naturel des routes
-
-        # On calcule le score gagne ou perdu des cartes destinations
-
-        # On calcule le score bonus de la route la plus longue
-        pass
+        # On somme les point des cartes objectif
+        # Et des possessions de routes
+        self.score_finale = self.point_bonus_malus_destination + self.point_possession_route
+        return self.score_finale
 
     def prendre_cartes_wagons(self, indice_1, indice_2):
         """
@@ -129,4 +129,28 @@ class Joueur(object):
         self.plateau_de_jeu.construction_possible.remove((depart, arrive))
         self.plateau_de_jeu.construction_possible.remove((arrive, depart))
 
+        # On compte les points de possesion de route
+        if longueur_route == 1:
+            self.point_possession_route += 1
+        elif longueur_route == 2:
+            self.point_possession_route += 2
+        elif longueur_route == 3:
+            self.point_possession_route += 4
+        elif longueur_route == 4:
+            self.point_possession_route += 7
+        elif longueur_route == 5:
+            self.point_possession_route += 11
+        elif longueur_route == 6:
+            self.point_possession_route += 15
+        elif longueur_route == 7:
+            self.point_possession_route += 19
+        elif longueur_route == 8:
+            self.point_possession_route += 21
+        print("vous avez ", self.point_possession_route, " points de routes")
+
+        # On comptabilise les points de bonus d objectif
+        for carte in self.cartes_destinations:
+            if depart == carte.depart and arrive == carte.arrive:
+                self.point_bonus_malus_destination += 2*(carte.point)
+                print("bonus ou malus de point objectif: ", self.point_bonus_malus_destination)
         return True

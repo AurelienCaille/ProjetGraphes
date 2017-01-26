@@ -29,6 +29,7 @@ class Humain(Joueur):
 
             if choix_i == 'o':
                 self.cartes_destinations.append(carte)
+                self.point_bonus_malus_destination -= carte.point
             elif choix_i == 'n':
                 pass
             else:
