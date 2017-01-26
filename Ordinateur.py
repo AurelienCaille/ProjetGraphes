@@ -13,28 +13,47 @@ class Ordinateur(Joueur):
         # S'il a les cartes il construit la route sinon il pioche des wagons//locomotive
 
         # Recherche du chemin le plus court parmis les cartes destinations
-        resultat = (float('inf'), None)  # resultat = (longueur, chemin)
+        resultat = (float('inf'), (None, None))  # resultat = (longueur, chemin)
+        couleur = None
         if len(self.cartes_destinations) > 0:
+            route_a_construire = []
             for carte_destination in self.cartes_destinations:
                 depart = carte_destination.depart
                 arrive = carte_destination.arrive
 
-                dijkstra_resultat = self.plateau_de_jeu.map.dijkstra(depart)
+                # On prend le chemin le plus court, on le decompose
+                # et on regarde si la route est constructible
+                chemin = self.plateau_de_jeu.map.dijkstra(depart)[arrive]
+                for i in range(len(chemin[0]) - 1):
+                    if chemin[0][i] < resultat[0] and (chemin[1][i], chemin[1][i+1]) in self.plateau_de_jeu.construction_possible:  # Ne fonctionne pas lors de route double
+                        resultat = (chemin[0][i], (chemin[1][i], chemin[1][i+1]))
+                        for child in self.plateau_de_jeu.map.adjacency_list_valued[chemin[1][i]]:  # On recupere la couleur associee
+                            if child[0] == chemin[1][i+1]:
+                                couleur = child[1][1]
 
-                if dijkstra_resultat[arrive][0] < resultat[0]:
-                    resultat = dijkstra_resultat[arrive]
+
+
         else:
             # On pioche 1 seule carte_destination  # Strategie A DEFINIR
+            print("L'Ordinateur pioche une carte_destination")
             self.cartes_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
             self.adversaire.jouer()
 
-        # On verifie si on peut construire le chemin le plus court
-        couleur_route = self.plateau_de_jeu.map.adjacency_list_valued[depart][1]
+        depart = resultat[1][0]
+        arrive = resultat[1][1]
+        print("Je veux construire", resultat, couleur)
+        print("J'ai les cartes wagons", self.cartes_wagons)
 
+        # On verifie si on peut construire le chemin le plus court
         # On verifie que l'on a bien toutes les cartes et on construit alors la route
-        if len([carte_wagon for carte_wagon in self.cartes_wagons if carte_wagon.couleur == couleur_route]):
-            self.construire_route(depart, arrive, 0, couleur_route)  # !!!! NE PREND PAS EN COMPTE LES ROUTES GRISES
+        if len([carte_wagon for carte_wagon in self.cartes_wagons if carte_wagon.couleur == couleur]) > resultat[0]:
+            print("L'Ordinateur tente de construire la route", resultat)
+            if self.construire_route(depart, arrive, 0, couleur):  # !!!! NE PREND PAS EN COMPTE LES ROUTES GRISES
+                print("L'Ordinateur a bien construit la route")
+            else:
+                print("L'or n'a pas reussi a construire la route")
             self.adversaire.jouer()
         else:
+            print("L'ordinateur prend deux cartes wagons")
             self.prendre_cartes_wagons(0, 1) # !!!!!! NE CHOISIS PAS LES WAGONS CORRECTEMENTS
             self.adversaire.jouer()
