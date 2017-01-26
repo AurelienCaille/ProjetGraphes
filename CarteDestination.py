@@ -11,4 +11,4 @@ class CarteDestination(object):
 
     def __repr__(self):
 
-        return (self.depart + "--->" + self.arrive)
+        return (self.depart + "--->" + self.arrive + " : " + self.point)
