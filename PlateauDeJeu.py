@@ -31,7 +31,7 @@ class PlateauDeJeu(object):
         self.joueur2.adversaire = joueur1
 
         # On ajoute les cartes wagons visibles
-        for dummy_i in range(4):
+        for dummy_i in range(5):
             self.cartes_wagon_visibles.append(self.pioche_carte_wagon.piocher())
 
         # On fait la liste des constructions de route possible
