@@ -15,6 +15,7 @@ class PlateauDeJeu(object):
         :self.joueur2: pareil que pour j1
         """
         self.map = Graph()
+        self.map.open_graph()
         self.construction = Graph()
         self.construction.nodes = self.map.nodes
         self.construction_possible = []

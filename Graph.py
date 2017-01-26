@@ -26,7 +26,6 @@ class Graph(object):
         self.edges = []
         self.adjacency_list = {}
         self.adjacency_list_valued = {}
-        self.open_graph()
 
     def add_a_node(self, node_name):
         """
