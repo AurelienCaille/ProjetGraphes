@@ -9,6 +9,7 @@ class PiocheCarteDestination(object):
 
         self.pioche = []
         self.open_file()
+        self.melanger()
 
     def melanger(self):
         """
