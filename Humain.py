@@ -13,7 +13,7 @@ class Humain(Joueur):
         Retourne True s'il a bien pioche et False si l'action ne s'est pas faite
         """
         # On pioche les cartes
-        if len(self.plateau_de_jeu.pioche_carte_destination.pioche) >= 3:
+        if len(self.plateau_de_jeu.pioche_carte_destination.pioche) < 3:
             print("Il n'y a pas assez de carte destination !!")
             return False
         carte_destinations = []
@@ -29,11 +29,11 @@ class Humain(Joueur):
         # On fait choisir a l'utilisateur les cartes
         print("Quelles cartes choisissez vous ? (Minimum 1)")
         for carte in carte_destinations:
-            choix_i = input("Voulez vous prendre la carte:", carte, "Oui(o)//Non(n) ")
+            choix_i = input("Voulez vous prendre la carte:" + str(carte) + "Oui(o)//Non(n) ")
 
             if choix_i == 'o':
                 self.cartes_destinations.append(carte)
-                self.point_bonus_malus_destination -= carte.point
+                self.point_bonus_malus_destination -= int(carte.point)
             elif choix_i == 'n':
                 pass
             else:
