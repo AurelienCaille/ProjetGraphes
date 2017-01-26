@@ -14,7 +14,7 @@ if __name__ == "__main__":
     choix_ordinateur = False
 
     while choix_ordinateur is False:
-        input_ordinateur = input("Voulez vous inclure un Ordinateur: Oui(o) Non(n) ?")
+        input_ordinateur = input("Voulez vous inclure un Ordinateur: Oui(o) Non(n) ? ")
 
         if input_ordinateur == "o":
             choix_ordinateur = True

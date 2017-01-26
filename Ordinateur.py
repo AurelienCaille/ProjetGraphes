@@ -36,7 +36,9 @@ class Ordinateur(Joueur):
         else:
             # On pioche 1 seule carte_destination  # Strategie A DEFINIR
             print("L'Ordinateur pioche une carte_destination")
-            self.cartes_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
+            if len(self.plateau_de_jeu.pioche_carte_destination.pioche) is not None:
+                self.cartes_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
+            print("_____________________________")
             self.adversaire.jouer()
 
         depart = resultat[1][0]
@@ -52,8 +54,13 @@ class Ordinateur(Joueur):
                 print("L'Ordinateur a bien construit la route")
             else:
                 print("L'or n'a pas reussi a construire la route")
+            print("_____________________________")
             self.adversaire.jouer()
         else:
             print("L'ordinateur prend deux cartes wagons")
-            self.prendre_cartes_wagons(0, 1) # !!!!!! NE CHOISIS PAS LES WAGONS CORRECTEMENTS
+            if len(self.plateau_de_jeu.pioche_carte_wagon.pioche) is not None:
+                self.prendre_cartes_wagons(0, 1) # !!!!!! NE CHOISIS PAS LES WAGONS CORRECTEMENTS
+            else:
+                print("Oups ma super strategie n'est pas possible.. il n'y a plus de carte wagon disponible")
+            print("_____________________________")
             self.adversaire.jouer()

@@ -21,7 +21,10 @@ class PiocheCarteDestination(object):
         """
         supprime une carte de la pile de carte, et le renvoie
         """
-        return self.pioche.pop()
+        if len(self.pioche) is not None:
+            return self.pioche.pop()
+        else:
+            return None
 
     def __repr__(self):
         """

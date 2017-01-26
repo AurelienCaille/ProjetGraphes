@@ -13,10 +13,14 @@ class Humain(Joueur):
         Retourne True s'il a bien pioche et False si l'action ne s'est pas faite
         """
         # On pioche les cartes
+        if len(self.plateau_de_jeu.pioche_carte_destination.pioche) >= 3:
+            print("Il n'y a pas assez de carte destination !!")
+            return False
         carte_destinations = []
-        carte_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
-        carte_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
-        carte_destinations.append(self.plateau_de_jeu.pioche_carte_destination.piocher())
+        for dummy_i in range(3):
+            carte_destination = self.plateau_de_jeu.pioche_carte_destination.piocher()
+            if carte_destination is not None:
+                carte_destinations.append(carte_destination)
 
         print("Les cartes destinations sont:")
         for carte in carte_destinations:
@@ -25,7 +29,7 @@ class Humain(Joueur):
         # On fait choisir a l'utilisateur les cartes
         print("Quelles cartes choisissez vous ? (Minimum 1)")
         for carte in carte_destinations:
-            choix_i = input("Voulez vous prendre la carte:", carte, "Oui(o)//Non(n)")
+            choix_i = input("Voulez vous prendre la carte:", carte, "Oui(o)//Non(n) ")
 
             if choix_i == 'o':
                 self.cartes_destinations.append(carte)
@@ -49,12 +53,12 @@ class Humain(Joueur):
             \n-Prendre possession d'une route(r)\
             \n-Prendre des cartes destination supplementaires(d)\
             \n-Liste des routes possibles(rp)\
-            \n-Affichage de la carte du jeu (c)")
+            \n-Affichage de la carte du jeu (c) ")
 
             if choix == "w":  # Selection des deux cartes wagons
                 print("Les cartes wagon disponibles sont:", self.plateau_de_jeu.cartes_wagon_visibles)
-                choix_carte_1 = input("Quel est l'indice de la 1er carte selectionnee (0-4)?")
-                choix_carte_2 = input("Quel est l'indice de la 2eme carte selectionnee(0-4)?")
+                choix_carte_1 = input("Quel est l'indice de la 1er carte selectionnee (0-4)? ")
+                choix_carte_2 = input("Quel est l'indice de la 2eme carte selectionnee(0-4)? ")
 
                 try:
                     choix_carte_1 = int(choix_carte_1)
@@ -84,10 +88,10 @@ class Humain(Joueur):
                 print("Attention le chemin doit etre direct,\
                  de plus verifier bien que vous ayer les cartes necessaires")
 
-                depart = input("Gare de depart?")
-                arrive = input("Gare d'arrive?")
-                couleur_choisie = input("Quelle couleur utilisee?")
-                nombre_locomotive = input("Combien de locomotive?")
+                depart = input("Gare de depart? ")
+                arrive = input("Gare d'arrive? ")
+                couleur_choisie = input("Quelle couleur utilisee? ")
+                nombre_locomotive = input("Combien de locomotive? ")
 
                 try:
                     nombre_locomotive = int(nombre_locomotive)
@@ -113,8 +117,8 @@ class Humain(Joueur):
                 print(self.plateau_de_jeu.map)
 
             elif choix == "42":  # Commande cheat permettant d'avoir le plus court chemin entre deux gares
-                depart = input("Gare de départ ?")
-                arrive = input("Gare d'arrive ?")
+                depart = input("Gare de départ ? ")
+                arrive = input("Gare d'arrive ? ")
 
                 try:
                     dijsktra_resultat = self.plateau_de_jeu.map.dijkstra(depart)
@@ -133,5 +137,6 @@ class Humain(Joueur):
             print("Plus qu'un seul tour!")
             self.dernier_tour = True
 
-        input("Appuyer sur une touche pour faire jouer votre adversaire")
+        input("Appuyer sur une touche pour faire jouer votre adversaire ")
+        print("_____________________________")
         self.adversaire.jouer()
